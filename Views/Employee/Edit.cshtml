@@ -1,0 +1,53 @@
+﻿@model RSOE.Models.Employee
+@{
+    ViewBag.Title = "Edit employee";
+}
+
+<div class="header">
+    <h2>Edit "@Model.LastName" profile</h2>
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="body">
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.EmployeeId)
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", required = "required" }, style = "width: 100%" })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", required = "required" }, style = "width: 100%" })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EmploymentDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.EmploymentDate, new { htmlAttributes = new { @class = "form-control", type = "date", required = "required" } })
+                @Html.ValidationMessageFor(model => model.EmploymentDate, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Company</label>
+                @Html.DropDownListFor(model => model.CompanyId, ViewBag.Companies as SelectList)
+                @Html.ValidationMessageFor(model => model.CompanyId, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Position</label>
+                @Html.DropDownListFor(model => model.PositionId, ViewBag.Positions as SelectList)
+                @Html.ValidationMessageFor(model => model.PositionId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <input type="submit" value="Save" class="btn btn-success" />
+            @Html.ActionLink("Back to List", "Index", "Employee", null, new { @class = "btn btn-light" })
+        </div>
+    </div>
+}
+

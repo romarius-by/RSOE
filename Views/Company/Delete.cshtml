@@ -1,0 +1,21 @@
+﻿@model RSOE.Models.Company
+@{
+    ViewBag.Title = "Delete company";
+}
+
+<div class="header text-center">
+    <h2>Are you sure you want to delete this company "@Model.Name" ?</h2>
+</div>
+
+@using (Html.BeginForm())
+{
+<div class="body">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.CompanyId)
+
+    <div class="d-flex justify-content-between">
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        @Html.ActionLink("Back to List", "Index", "Company", null, new { @class = "btn btn-light" })
+    </div>
+</div>
+}

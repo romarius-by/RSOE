@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "RSOE system";
+}
+
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <h1>Welcome to RSOE system!</h1>
+    <p class="lead">
+        @Html.ActionLink("Employees", "Index", "Employee", null, new { @class = "btn btn-light" })
+        @Html.ActionLink("Companies", "Index", "Company", null, new { @class = "btn btn-light" })
+    </p>
+</div>

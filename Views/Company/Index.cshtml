@@ -1,0 +1,64 @@
+﻿@model IEnumerable<RSOE.Models.Company>
+
+@{
+    ViewBag.Title = "Companies";
+}
+
+<h2>Companies list</h2>
+
+<p>
+    @Html.ActionLink("Add company", "Create", null, null, new { @class = "btn btn-success" })
+</p>
+
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">
+                Id
+            </th>
+            <th scope="col">
+                Name
+            </th>
+            <th scope="col">
+                Size
+            </th>
+            <th scope="col">
+                Form
+            </th>
+            <th scope="col">
+                Actions
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Form)
+                </td>
+                <td class="d-flex justify-content-around">
+                    <div class="btn-group-vertical">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CompanyId }, new { @class = "btn btn-success" })
+                    </div>
+                    <div class="btn-group-vertical">
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CompanyId }, new { @class = "btn btn-danger" })
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="d-flex justify-content-around">
+    @Html.ActionLink("Back to Home page", "Index", "Home", null, new { @class = "btn btn-light" })
+</div>
