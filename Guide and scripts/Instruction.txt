@@ -1,0 +1,7 @@
+1) Создать в MS SMS вручную базу данных под названием RSOEDB
+2) Запустить скрипт Tables.sql, создадутся таблицы
+3) Запустить скрипты по очередности PositionProcedures.sql -> CompanyProcedures.sql -> EmployeeProcedures.sql
+4) Запустить скрипт InitEmployeeRoles.sql
+5) Затем скрипт InitCompanyAndEmployee.sql
+6) Можно запускать Visual Studio, пофиксить connectionString если не совсем такой же получился
+7) Enjoy :)
